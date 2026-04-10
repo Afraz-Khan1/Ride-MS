@@ -1,0 +1,109 @@
+h1{
+    font-size: 35px;
+    font-family: 'Playfair Display',serif;
+    font-weight: bold;
+    letter-spacing: 1px; /* cleaner heading */
+}
+
+body{ 
+    background:  linear-gradient(to right, #1e3c72, #2a5298);
+    margin:0;
+    text-align: center;
+    font-family:'Playfair Display','Helvetica',serif;
+    color:azure;
+}
+
+/*this is the box where all login boxes and input comes under it and box styles is written*/
+.container{
+    background:white;
+    color: #333; /* softer than pure black */
+    width: 350px;
+    margin:40px auto;
+    padding: 25px;
+    border-radius: 15px; /* smoother edges */
+    box-shadow:0 8px 20px rgba(0,0,0,0.2); /* modern shadow */
+}
+
+input,select{
+    padding:10px; /* improved spacing */
+    width:100%;
+    margin:10px 0; /* fixed alignment issue */
+    border:1px solid #ccc; /* added */
+    border-radius:6px; /* smoother */
+}
+
+/*container h2 heading font style*/
+.container h2{
+    font-family: 'Poppins','sans-serif';
+    font-size: 18px; /* FIXED (was 10) */
+    font-weight: bold;
+    margin-bottom:10px;
+}
+
+button{
+    margin-top:10px;
+    margin-bottom: 10px;
+    text-decoration:none;    /*text-decoration: none → removes underline from link*/
+    padding: 10px 25px;
+    background:#2a5298;
+    border:none;
+    color:white;
+    width:70%;
+    border-radius:6px; /* added */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* cleaner shadow */
+    cursor:pointer;
+    transition:0.3s; /* smooth hover */
+}
+
+/* FIX: you wrote .button:hover but actual element is button */
+button:hover{
+    background: #1e3c72;
+}
+
+.error{
+    background:#ffe6e6;
+    color:red;
+    padding:20px; /* FIXED (auto invalid) */
+    margin:10px;
+    border:1px solid red;
+    border-radius:5px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2); /* added */
+}
+
+.success{
+    background:#e6ffe6; /* better green tone */
+    color:green;
+    padding:20px;
+    margin:10px;
+    border:1px solid green;
+    border-radius:5px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2); /* added */
+}
+
+.table-container{
+    max-height: 200px;
+    overflow-y: auto; /* vertical scroll*/
+    overflow-x: auto; /* horizontal scroll*/
+}
+
+table{
+    border-collapse: collapse; /* cells have single border without this cells have double border*/
+    width:100%;
+}
+
+th, td{
+    padding:8px; /* added spacing */
+}
+
+th{
+    position:sticky;
+    top:0;
+    background:lightsalmon;
+    color:white; /* better contrast */
+}
+
+tr:nth-child(even) td{
+    background: lightgoldenrodyellow;
+}

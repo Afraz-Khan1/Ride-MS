@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <title>User Dashboard</title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+    </head>
+
+    <body>
+
+        
+        <h1> The Rider Management System</h1>
+    <div class="container">
+        
+        {%if user_rider !=None%}
+
+            {%if message=="Sorry no rides available right now!"%}
+            <div class="error">
+                {{message}}
+                <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Sorry, No drivers available right now!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Congratulations! Ride Booked"%}
+            <div class="success">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Fare Can't Be zero"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="No Driver Available Of Your Vehicle Type"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Locations Should Be Filled In Correct Format!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Thankyou for your feedback!"%}
+            <div class="success">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Feedback already recorded!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="You Have Completed Rides That Are Not Paid Yet!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Payment Successfull!"%}
+            <div class="success">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Please Enter Required Amount Payable!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Sorry, There Are No Completed Rides!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%elif message=="No Pending Payments left!"%}
+            <div class="error">
+            {{message}}
+            <a href="/userdash"><button>Return</button></a>
+            </div>
+            {%else%}
+        <h2>USER DASHBOARD</h2>
+        <a href="/rider-bookrides"><button>Book Rides</button></a>
+        <a href="/rider-viewrides"><button>View Rides</button></a>
+        <a href="/rider-payment"><button>Payment</button></a>
+        <a href="/rider-feedback"><button>Feedback</button></a>
+        <a href="/"><button>Home</button></a>
+        <hr>
+        {%endif%}
+        {%endif%}
+        
+    </div>
+    </body>
+    
+
+</html>

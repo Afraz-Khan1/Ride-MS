@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <title>User Dashboard</title>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+    </head>
+
+    <body>
+
+        
+        <h1> The Rider Management System</h1>
+    <div class="container">
+        
+        {%if user_driver !=None%}
+
+            {%if message=="Sorry, No drivers available right now!"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Thankyou for your feedback!"%}
+            <div class="success">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Congratulations!, licence registered"%}
+            <div class="success">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="License Duplicate Detected!"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Sorry, Your Licence Is Already Registered!"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Your Availability And Rates Are Now Set!"%}
+            <div class="success">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Your Availability Is Already Set!"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Sorry, No payments yet!"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%elif message=="Sorry, Complete Rides First"%}
+            <div class="error">
+            {{message}}
+            <a href="/driverdash"><button>Return</button></a>
+            </div>
+            {%else%}
+        <h2>DRIVER DASHBOARD</h2>
+        <a href="/driver-license"><button>Licence Registration</button></a>
+        <a href="/driver-avail"><button>Set Availability</button></a>
+        <a href="/driver-checkpay"><button>Check payments</button></a>
+        <a href="/driver-checkfeed"><button>Check Feedback</button></a>
+        <a href="/"><button>Home</button></a>
+        <hr>
+        {%endif%}
+        {%endif%}
+        
+    </div>
+    </body>
+    
+
+</html>

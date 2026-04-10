@@ -1,0 +1,141 @@
+/* 
+Sets page style: removes default margin, changes font, 
+adds blue gradient background, makes text white and centered 
+*/
+body { 
+    margin: 0;
+    font-family: 'Playfiar Display', Helvetica, sans-serif;
+    background:  linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;   
+}
+
+h1{
+    font-family: 'Playfair Display', serif;/* in case it failed to load the plafiar one serif will load as font.*/
+    margin-top: 40px;
+    font-size: 35px;
+    letter-spacing: 1px; /* added for cleaner look */
+}
+
+/*this is the box where all login boxes and input comes under it and box styles is written*/
+.container{
+    background:white;
+    color: #333; /* improved readability */
+    width: 350px;
+    margin:40px auto;
+    padding: 25px;
+    border-radius: 15px; /* slightly smoother */
+    box-shadow:0 8px 20px rgba(0,0,0,0.2); /* improved shadow */
+}
+
+input, select{ /* both input and select sytling is here. margin is space outside the box*/
+    padding:10px; /* slightly bigger */
+    margin:10px 0; /* fixed alignment */
+    width: 100%;
+    border:1px solid #ccc; /* added border */
+    border-radius:6px; /* smoother */
+}
+
+button{
+    margin-top:10px;
+    padding: 10px;
+    background: #2a5298;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* improved shadow */
+    width: 170px;
+    font-size: 16px;
+    border:none;
+    border-radius:6px; /* added */
+    cursor:pointer;
+    transition: 0.3s; /* smooth hover */
+}
+
+button:hover{
+    background: #1e3c72;
+}
+
+.admin-btn, .login-btn {
+    display: block;     /*display: inline-block → makes <a> behave like a block (so padding/width works)*/
+    width: 150px;
+    margin: 10px auto;
+    padding: 10px;
+    text-decoration: none;       /*text-decoration: none → removes underline from link*/
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* improved */
+    border-radius:6px; /* added */
+    transition:0.3s; /* smooth hover */
+}
+.admin-btn{
+    background:#28a745;
+    
+}
+.admin-btn:hover{
+    background:#218838; /* smoother green */
+}
+
+.login-btn{
+    background: #FFEB3B;
+    color:black; /* better contrast */
+}
+
+.login-btn:hover{
+    background:#e0a800; /* smoother yellow */
+}
+
+/*container h2 heading font style*/
+.container h2{
+    font-family: 'Poppins','sans-serif';
+    font-size: 18px; /* fixed (was 10) */
+    font-weight: bold;
+}
+
+/*container h2 heading of admin panel font style no need cuz i want same as of main page font
+it would be like .admin-container than same thing*/
+
+.success{
+   background:#e6ffe6; /* softer green */
+   color:green;
+   padding:10px;
+   margin:10px 5px;
+   border:1px solid green;
+   border-radius:5px;
+   text-align:center;
+   box-shadow:0 4px 10px rgba(0,0,0,0.2); /* fixed */
+}
+
+.error{
+    font-family: "Playfair Display";
+    color:red;
+    background:white;
+    text-align: center;
+    padding:20px; /* reduced (35 was too big) */
+    margin:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2); /* fixed */
+    border: 1px solid red; /* fixed */
+    border-radius:5px;
+}
+
+.table-container{
+    max-height: 200px;
+    overflow-y: auto; /* vertical scroll*/
+    overflow-x: auto; /* horizontal scroll*/
+}
+
+table{
+    border-collapse: collapse; /* cells have single border without this cells have double border*/
+    width:100%;
+}
+
+th, td{
+    padding:8px; /* added spacing */
+}
+
+th{
+    position:sticky;
+    top:0;
+    background:lightsalmon;
+    color:white; /* added */
+}
+
+tr:nth-child(even) td{
+    background: lightgoldenrodyellow;
+}

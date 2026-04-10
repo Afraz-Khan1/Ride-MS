@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin panel</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='user.css')}}">
+    </head>
+
+    <body>
+        <h1>The Rider Management System</h1>
+        <div class="container">
+
+        {%if message=="No Feedbacks Yet!"%}
+        <div class="error">
+           {{message}}
+           <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Feedback Deleted Successfully!"%}
+        <div class="success">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry No Riders Yet!"%}
+        <div class="error">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry No drivers Yet!"%}
+        <div class="error">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Ride Cancelled By Admin!"%}
+        <div class="success">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry, No Rides Yet!"%}
+        <div class="error">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry, No feedbacks yet"%}
+        <div class="error">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry, No Payments yet!"%}
+        <div class="error">
+           {{message}}
+           <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="Sorry No Rides To Show"%}
+        <div class="error">
+            {{message}}
+        <a href="/admindash"><button>Dashboard</button></a>
+        </div>
+        
+        {%elif message=="User Status Changed By Admin!"%}
+        <div class="success">
+            {{message}}
+            <a href="/admindash"><button>Dashboard</button></a>
+        </div> 
+        {%else%}
+
+        <h2>Admin Dashboard</h2>
+        <a href="/userrole"><button>Manupilate User Status</button></a> <!--user role will redirect to admin-->
+        <a href="/cancel_ride_byadmin"><button>Cancel Rides</button></a>
+        <a href="/delete_feedback_byadmin"><button>Delete Feedbacks</button></a>
+        <a href="/viewrides_byadmin"><button>View Rides</button></a>
+        <a href="/viewpayments_byadmin"><button>View Payments</button></a>
+        <a href="/viewfeedback_byadmin"><button>View Feedbacks</button></a>
+        <a href="/"><button>Home</button></a>
+        </div>
+        {%endif%}
+        
+    </body>
+</html>

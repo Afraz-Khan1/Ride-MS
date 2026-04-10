@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <title>User-driver</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='user.css')}}">
+    </head>
+
+    <body>
+
+        <h1> The Rider Management System</h1>
+    <div class="container">
+        
+
+        <!-- set licence form-->
+        {%if form == "license"%}
+        <h2>Fundamentals</h2>
+        <form action="/driver-license" method="POST">
+            <input type="text" name="license" placeholder="License Number" required>
+            <select name="status" required>
+                <option value="">Select Status</option>
+                <option value="available">Available</option>
+                <option value="ongoing">OnGoing</option>
+                <option value="busy">Busy</option>
+            </select>
+            <button type="submit">Submit</button>
+
+        </form>
+        <a href="/driverdash"><button>Dashboard</button></a>
+        <hr>
+        
+
+        <!-- driver available form-->
+        {%elif form == "setavail"%}
+        <h2>Availability Panel</h2>
+        <form action="/driver-avail" method="POST">
+            <input type="text" name="ontime" placeholder="On Timing" required>
+            <input type="text" name="offtime" placeholder="Off Timing" required>
+            <select name="vehicletype">
+                <option value="">Select Vehicle</option>
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+            </select>
+            <button type="submit">Submit</button>
+
+        </form>
+        <a href="/driverdash"><button>Dashboard</button></a>
+        <hr>
+
+        <!-- checkfeedback form-->
+        {%elif form == "checkfeed"%}
+        <h2>Feedback Panel</h2>
+        <form action="/driver-checkfeed" method="GET">
+            <div class="table-container">
+            <table border=1 style="margin:auto;">
+            <tr> <!-- table row-->
+                <th>FeedbackID</th> <!-- column heading-->
+                <th>RideID</th>
+                <th>RiderID</th>
+                <th>Ratings</th>
+                <th>Comments</th>
+            </tr>
+
+            {%for feedback in feeds%}
+            <tr>
+                <td>{{feedback[0]}}</td> <!-- row data-->
+                <td>{{feedback[1]}}</td>
+                <td>{{feedback[2]}}</td>
+                <td>{{feedback[3]}}</td>
+                <td>{{feedback[4]}}</td>
+            </tr>
+            {%endfor%}
+
+            </table>
+            </div>
+            
+        </form>
+        <a href="/driverdash"><button>Dashboard</button></a>
+
+        <!-- received payments-->
+        {%elif form == "payreceived"%}
+        <h2>Payments Received</h2>
+        <div class="table-container">
+        <table border="1" style="margin:auto;">
+        <tr>
+        <th>PaymentID</th>
+        <th>RideID</th>
+        <th>Amount</th>
+        <th>Paymentstatus</th>
+        <th>Paymentdate</th>
+        </tr>
+
+        {% for payment in payments %}
+        <tr>
+        <td>{{ payment[0] }}</td>
+        <td>{{ payment[1] }}</td>
+        <td>{{ payment[2] }}</td>
+        <td>{{ payment[3] }}</td>
+        <td>{{ payment[4] }}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+        </div>
+        
+        <a href="/driverdash"><button>Dashboard</button></a>
+        {%endif%}
+
+        </div>
+    </body>
+</html>

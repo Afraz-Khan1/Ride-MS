@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Admin Panel
+        </title>
+        <link rel="stylesheet" href="{{url_for('static',filename='user.css')}}">
+    </head>
+    <body>
+
+        <div class="container">
+            {%if form=="userstatus"%}
+            <h2>Status Manupilation</h2>
+            <form action="/user_status_byadmin" method="POST"> <!-- userstatus admin route func name-->
+
+             <input type="hidden" name="role" value="{{ role }}">
+             <SELECT name="newstatus" required>
+                <option value="">Select New Status</option>
+                <option value="ok">OK</option>
+                <option value="blocked">Blocked</option>   
+             </SELECT>
+
+             <select name="userid" required>
+                <option value="">Select User Id</option>
+                {%if role=="rider"%}
+                {%for rider_id in rider_ids%}
+                <option value="{{rider_id[0]}}">Rider_id - {{rider_id[0]}}</option>
+                {%endfor%}
+                {%elif role=="driver"%}
+                {%for driver_id in driver_ids%}
+                <option value="{{driver_id[0]}}">Driver_id - {{driver_id[0]}}</option>
+                {%endfor%}
+                {%endif%}
+             </select>
+
+             <button type="submit">Submit</button>
+             <a href="/admindash"><button>Dashboard</button></a>
+            </form>
+
+        {%elif form=="userfeed"%}
+            <h2>Delete Feedback</h2>
+            <form action="/delete_feedback_byadmin" method="POST">
+             <select name="feedback_id" required>
+                <option value="">Select feedback id</option>
+                {%for feed_id in feed_ids%}
+                <option value="{{feed_id[0]}}">{{feed_id[0]}}</option>
+                {%endfor%}
+             </select>
+             <button type="submit">Submit</button>
+             <a href="/admindash"><button>Dashboard</button></a>
+            </form>
+
+        {%elif form=="cancelride"%}
+            <h2>Ride Cancel</h2>
+            <form action="cancel_ride_byadmin" method="POST">
+             <select name="rideid" required>
+             <option value="">Select Ride id</option>
+             {%for ride_id in ride_ids%}
+             <option value="{{ride_id[0]}}">Ride id-{{ride_id[0]}}</option>
+             {%endfor%}
+             </select>
+             <button type="submit">Submit</button>
+             <a href="/admindash"><button>Dashboard</button></a>
+            </form>
+
+        {%elif form=="checkfeed"%}
+            <h2>Feedbacks View</h2>
+            <div class="table-container">
+             <table border="1" margin="margin:auto;">
+                <tr>
+                <th>Feedback_id</th>
+                <th>Ride_id</th>
+                <th>Rider_id</th>
+                <th>Ratings</th>
+                <th>Comments</th>
+                </tr>
+
+                {%for feed in feeds%}
+                <tr>
+                    <td>feed[0]</td>
+                    <td>feed[1]</td>
+                    <td>feed[2]</td>
+                    <td>feed[3]</td>
+                    <td>feed[4]</td>
+                </tr>
+                {%endfor%}
+                
+            </table>
+            </div>
+            <a href="/admindash"><button>Dashboard</button></a>
+
+        {%elif form=="viewrides"%}
+            <h2>Rides View</h2>
+            <div class="table-container">
+             <table border="1" style="margin:auto;">
+        <tr>
+        <th>RideID</th>
+        <th>RiderID</th>
+        <th>DriverID</th>
+        <th>Vehicle</th>
+        <th>Pickup</th>
+        <th>Drop</th>
+        <th>Fare</th>
+        </tr>
+
+        {% for ride in rides %}
+        <tr>
+        <td>{{ ride[0] }}</td>
+        <td>{{ ride[1] }}</td>
+        <td>{{ ride[2] }}</td>
+        <td>{{ ride[3] }}</td>
+        <td>{{ ride[4] }}</td>
+        <td>{{ ride[5] }}</td>
+        <td>{{ ride[6] }}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+            </div>
+        <a href="/admindash"><button>Dashboard</button></a>
+
+        {%elif form=="viewpay"%}
+            <h2>Payment View</h2>
+            <div class="table-container">
+             <table border="1" style="margin:auto;">
+        <tr>
+        <th>PaymentID</th>
+        <th>RideID</th>
+        <th>Amount</th>
+        <th>Paymentstatus</th>
+        <th>Paymentdate</th>
+        </tr>
+
+        {% for payment in payments %}
+        <tr>
+        <td>{{ payment[0] }}</td>
+        <td>{{ payment[1] }}</td>
+        <td>{{ payment[2] }}</td>
+        <td>{{ payment[3] }}</td>
+        <td>{{ payment[4] }}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+        </div>
+        <a href="/admindash"><button>Dashboard</button></a>
+
+        {%elif form=="userrole"%}
+        <h2>Role Info</h2>
+        <form action="/userrole" method="POST">
+            <select name="role" required>
+                <option type="">Select user role</option>
+                <option type="rider">Rider</option>
+                <option type="driver">Driver</option>
+            </select>
+            <button type="submit">Submit</button>
+            <a href="/admindash"><button>Dashboard</button></a>
+        </form>
+
+        {%endif%}
+
+        </div>
+    </body>
+
+</html>

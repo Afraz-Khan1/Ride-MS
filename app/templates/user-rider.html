@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <title>User-rider</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+
+    <body>
+
+        <h1> The Rider Management System</h1>
+    <div class="container">
+        
+
+        <!-- ridebook form-->
+        {%if form == "bookride"%}
+        <h2>Book Rides</h2>
+        <form action="/rider-bookrides" method="POST">
+            <input type="text" name="pickupaddress" placeholder="Pickup: Address Space City" required>
+            <input type="text" name="dropaddress" placeholder="Drop: Address Space City" required>
+            <input type="number" name="distance" placeholder="Total Distance" required>
+            <input type="number" name="fare" placeholder="Enter Fare" required>
+            <!--Drop down-->
+            <select name="vehicle">
+            <option value="">Select vehical</option>
+            <option value="car">Car</option>
+            <option value="bike">Bike</option>
+            </select>
+            
+            <button type="submit">Book Ride</button>
+
+        </form>
+        <a href="/userdash"><button>Dashboard</button></a>
+        <hr>
+
+        <!-- view rides-->
+        {%elif form == "viewrides"%}
+        <h2>Booked Rides</h2>
+        <div class="table-container">
+        <table border="1" style="margin:auto;">
+        <tr>
+        <th>RideID</th>
+        <th>RiderID</th>
+        <th>DriverID</th>
+        <th>Vehicle</th>
+        <th>Pickup</th>
+        <th>Drop</th>
+        <th>Fare</th>
+        </tr>
+
+        {% for ride in rides %}
+        <tr>
+        <td>{{ ride[0] }}</td>
+        <td>{{ ride[1] }}</td>
+        <td>{{ ride[2] }}</td>
+        <td>{{ ride[3] }}</td>
+        <td>{{ ride[4] }}</td>
+        <td>{{ ride[5] }}</td>
+        <td>{{ ride[6] }}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+        </div>
+        
+        <a href="/userdash"><button>Dashboard</button></a>
+        
+
+        <!-- payment form-->
+        {%elif form == "payment"%}
+        <h2>Payment Panel</h2>
+        <form action="/rider-payment" method="POST">
+            <select name="rideid" required>
+            <option value="">Select (Ride_ID - Fare - Payment Status)</option>
+            {% for ride_id in ride_ids%}
+            <option value="{{ ride_id[0] }}">{{ride_id[0]}} - {{ride_id[1]}} - {{ride_id[2]}}</option> <!-- ride_id[0] show ids-->
+            {%endfor%}
+            </select><br>
+            <input type="number" name="fare" placeholder="Enter Fare" required> 
+
+            <button type="submit">Pay</button>
+        </form>
+        <a href="/userdash"><button>Dashboard</button></a>
+        <hr>
+
+        <!-- feedback form-->
+        {%elif form == "feedback"%}
+        <h2>Feedback Panel</h2>
+        <form action="/rider-feedback" method="POST">
+            <select name="rideid" required>
+            <option value="">Select ID</option>
+            {% for ride_id in ride_ids%}
+            <option value="{{ ride_id[0] }}">{{ride_id[0]}}</option> <!-- ride_id[0] show ids-->
+            {%endfor%}
+            </select><br>
+
+            <input type="number" name="rating" placeholder="Ratings" required>
+            <input type="text" name="feedback" placeholder="Feedback">
+
+            <button type="submit">Submit</button>
+            
+        </form>
+        <a href="/userdash"><button>Dashboard</button></a>
+        {%endif%}
+
+
+
+        </div>
+    </body>
+</html>

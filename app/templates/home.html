@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+    <title>Ride Manager</title> <!-- shows up in browser tab-->
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!--link the css style to html-->
+    </head>
+    
+    <body>
+        {%if message=="Registration Successful!"%}
+        <div class="success">
+            {{message}}
+        </div>
+        <a href="/"><button>Return</button></a>
+
+        {%elif message=="Duplicate Data Detected!, Try Unique Rider Data"%}
+        <div class="error">
+            {{message}}
+        </div>
+        <a href="/"><button>Return</button></a>
+
+        {%elif message=="Duplicate Data Detected!, Try Unique Driver Data"%}
+        <div class="error">
+            {{message}}
+        </div>
+        <a href="/"><button>Return</button></a>
+        
+
+        {%else%}
+        <h1>THE RIDE MANAGEMENT SYSTEM</h1>
+         <div class="container">  <!-- 
+The div with class="container" is used to group all form elements 
+inside one styled box (white background, padding, shadow, centered layout).
+If we remove it, buttons and inputs will still work,
+but the page will not look properly structured or centered.
+-->
+        <h2>Create Account</h2>
+
+    <form action="/" method="POST">
+    <input type="text" name="name" placeholder="FULL NAME" required>
+    <input type="email" name="email" placeholder="EMAIL" required>
+    <input type="password" name="password" placeholder="PASSWORD" required>
+    <input type="number" name="phone" placeholder="Phone Number" required>
+
+    <!--drop down-->
+    <select name="role" required>
+        <option value="">Select Role</option>
+        <option value="rider">Rider</option>
+        <option value="driver">Driver</option>
+        <option value="admin">Admin</option>
+    </select>
+
+    <button type="submit">Register</button>
+
+    </form><hr> <!-- <hr> It just adds a visual line. below form-->
+
+    <a href="/adminlogin" class="admin-btn">Login as Admin</a> <!-- 
+The class="admin-btn" is used to give this button different styling 
+(from CSS .admin-btn).  <a> dont have any styling in button so we need to add styling in css for admin. button class have deault padding and margins.
+
+If we do not write this class, the button will only get the normal 
+button styling and will not appear green or different from other buttons.
+
+this button on pressing doesnt go anywhere cuz it is outside form where as register button goes to / route as
+it is inside form. admin needs to go to other route so it is outside form for cleaner logic and seperate.
+-->
+
+   <a href="/userlogin" class="login-btn">Login</a> <!--user login button a button with no padding by defualt--> 
+    </div>
+    {%endif%}
+
+    
+    </body>
+</html>
